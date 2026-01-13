@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use app\Models\Pizza;
+use App\Models\Pizza;
 
 class PizzaSeeder extends Seeder
 {

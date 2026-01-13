@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pizza_ingrediente', function (Blueprint $table) {
+        Schema::create('ingrediente_pizza', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pizza_id')
             ->contrained('pizzas')
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pizza_ingrediente');
+        Schema::dropIfExists('ingrediente_pizza');
     }
 };

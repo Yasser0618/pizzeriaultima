@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use app\Models\Pizza;
-use app\Models\Ingrediente;
+use App\Models\Pizza;
+use App\Models\Ingrediente;
 
 class PizzaIngredienteSeeder extends Seeder
 {
@@ -14,20 +14,19 @@ class PizzaIngredienteSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        $pizzaMargarita = Pizza::where('nombre','Margarita');
-        $pizzaCuatroQuesos = Pizza::where('nombre','CuatroQuesos');
-        $pizzaPrimavera = Pizza::where('nombre','Primavera');
+        $pizzaMargarita = Pizza::where('nombre', 'Margarita')->first();
+        $pizzaCuatroQuesos = Pizza::where('nombre', 'CuatroQuesos')->first();
+        $pizzaPrimavera = Pizza::where('nombre', 'Primavera')->first();
 
-        $mozzarela= Ingrediente::where(['nombre' => 'Mozzarela']);
-        $parmesano=Ingrediente::where(['nombre' => 'Parmesano']);
-        $gorgonzola=Ingrediente::where(['nombre' => 'Gorgonzola']);
-        $provolone=Ingrediente::where(['nombre' => 'Provolones']);
-        $tomate=Ingrediente::where(['nombre' => 'Tomate']);
-        $rucula=Ingrediente::where(['nombre' => 'Rúcula']);
+        $ingredienteMozzarella = Ingrediente::where('nombre', 'Mozzarela')->first();
+        $ingredienteParmensano = Ingrediente::where('nombre', 'Parmesano')->first();
+        $ingredienteGorgonzola = Ingrediente::where('nombre', 'Gorgonzola')->first();
+        $ingredienteProvolone = Ingrediente::where('nombre', 'Provolones')->first();
+        $ingredienteTomate = Ingrediente::where('nombre', 'Tomate')->first();
+        $ingredienteRucula = Ingrediente::where('nombre', 'Rúcula')->first();
 
-        $pizzaMargarita->ingredientes()->attach([$tomate->id,$mozzarela->id]);
-        $pizzaCuatroQuesos->ingredientes()->attach([$tomate->id,$mozzarela->id,$gorgonzola->id,$provolone->id]);
-        $pizzaPrimavera->ingredientes()->attach([$tomate->id,$mozzarela->id,$rucula->id]);
+        $pizzaMargarita->ingredientes()->attach([$ingredienteTomate->id, $ingredienteMozzarella->id]);
+        $pizzaCuatroQuesos->ingredientes()->attach([$ingredienteTomate->id, $ingredienteMozzarella->id, $ingredienteParmensano->id, $ingredienteGorgonzola->id, $ingredienteProvolone->id]);
+        $pizzaPrimavera->ingredientes()->attach([$ingredienteTomate->id, $ingredienteMozzarella->id, $ingredienteRucula->id]);
     }
 }
