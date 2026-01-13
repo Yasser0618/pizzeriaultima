@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pizza_ingrediente', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pizza_id')
-            ->contrained()
+            ->contrained('pizzas')
             ->onDelete('cascade');
 
             $table->foreignId('ingrediente_id')
-            ->contrained()
+            ->contrained('ingredientes')
             ->onDelete('cascade');
             
             $table->timestamps();
