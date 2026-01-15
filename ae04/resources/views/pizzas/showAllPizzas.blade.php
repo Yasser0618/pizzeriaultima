@@ -24,5 +24,4 @@
         </tr>
         @endforeach
     </table>
-    <button><a href="{{route('pizzas.create')}}">Crear Pizza</a></button>
 @endsection
