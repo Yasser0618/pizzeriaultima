@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PizzaController;
+use App\Http\Controllers\IngredienteController;
 
 Route::get('/', [PizzaController::class, 'showAllPizzas'])->name('pizzas.showAllPizzas');
 Route::get('/pizza/{id}', [PizzaController::class, 'showOnePizza'])->name('pizzas.showOnePizza');
@@ -14,3 +15,6 @@ Route::put('/pizzas/{id}', [PizzaController::class, 'update'])->name('pizzas.upd
 
 Route::get('/pizzas/confirm/{pizza}', [PizzaController::class, 'confirmDelete'])->name('pizzas.confirmDelete');
 Route::delete('/pizzas/destroy/{pizza}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
+
+Route::get('/ingredientes', [IngredienteController::class, 'showAllIngredientes'])->name('ingredientes.showAllIngredientes');
+Route::get('/ingrediente/{id}', [IngredienteController::class, 'showOneIngrediente'])->name('ingredientes.showOneIngrediente');
