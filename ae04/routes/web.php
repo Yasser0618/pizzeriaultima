@@ -21,3 +21,9 @@ Route::get('/ingrediente/{id}', [IngredienteController::class, 'showOneIngredien
 
 Route::post('/ingredientes/store', [IngredienteController::class, 'store'])->name('ingredientes.store');
 Route::get('/ingredientes/create', [IngredienteController::class, 'create'])->name('ingredientes.create');
+
+Route::get('/ingredientes/{id}/edit', [IngredienteController::class, 'edit'])->name('ingredientes.edit');
+Route::put('/ingredientes/{id}', [IngredienteController::class, 'update'])->name('ingredientes.update');
+
+Route::get('/ingredientes/confirm/{ingrediente}', [IngredienteController::class, 'confirmDelete'])->name('ingredientes.confirmDelete');
+Route::delete('/ingredientes/destroy/{ingrediente}', [IngredienteController::class, 'destroy'])->name('ingredientes.destroy');
