@@ -1,31 +1,37 @@
-<h1>Nueva Pizza</h1>
+@extends('layouts.app')
 
-@if ($errors -> any())
-    <div style='color:red'>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@section('titulo', 'Crear pizza')
 
-<form method="POST" action="{{ route('pizzas.store')}}">
-    @csrf <!--'@csrf'Impide o permite que haya un cruce de dominios, para que no se mande informacion de dominios distintos-->
+@section('contenido')
+    <h1>Nueva Pizza</h1>
 
-    <input type="text" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}"><br>
+    @if ($errors -> any())
+        <div style='color:red'>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-    <textarea name="descripcion">{{ old('descripcion') }}</textarea><br>
+    <form method="POST" action="{{ route('pizzas.store')}}">
+        @csrf <!--'@csrf'Impide o permite que haya un cruce de dominios, para que no se mande informacion de dominios distintos-->
 
-    <input type="number" step="0.01" name="precio" value="{{ old('precio') }}">
+        <input type="text" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}"><br>
 
-    <h3>Ingredientes</h3>
-    @foreach($ingredientes as $ingrediente)
-        <label>
-            <input type="checkbox" id="{{ $ingrediente->nombre }}" name="ingredientes[]" value="{{ $ingrediente->id }}" {{ in_array($ingrediente->id, old('ingredientes', [])) ? 'checked' : ''}}>
-            {{ $ingrediente->nombre }}
-        </label><br>
-    @endforeach
+        <textarea name="descripcion">{{ old('descripcion') }}</textarea><br>
 
-    <button type="submit">Guardar</button>
-</form>
+        <input type="number" step="0.01" name="precio" value="{{ old('precio') }}">
+
+        <h3>Ingredientes</h3>
+        @foreach($ingredientes as $ingrediente)
+            <label>
+                <input type="checkbox" id="{{ $ingrediente->nombre }}" name="ingredientes[]" value="{{ $ingrediente->id }}" {{ in_array($ingrediente->id, old('ingredientes', [])) ? 'checked' : ''}}>
+                {{ $ingrediente->nombre }}
+            </label><br>
+        @endforeach
+
+        <button type="submit">Guardar</button>
+    </form>
+@endsection

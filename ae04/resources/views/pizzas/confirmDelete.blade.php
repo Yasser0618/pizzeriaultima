@@ -1,14 +1,21 @@
-<h1>Eliminar Pizza</h1>
+@extends('layouts.app')
 
-<p>
-    ¿Estas seguro que quieres borrar la piza?
-    <strong>{{ $pizza->nombre }}</strong>
-</p>
+@section('titulo')
+Eliminar {{$pizza->nombre}}
+@endsection
 
-<form method="POST" action="{{ route('pizzas.destroy', $pizza) }}">
-    @csrf
-    @method('DELETE')
+@section('contenido')
+    <h1>Eliminar Pizza</h1>
 
-    <button type="submit">Sí, eliminar</button>
-    <a href="{{ route('pizzas.showAllPizzas') }}">Cancelar</a>
-</form>
+    <p>
+        ¿Estas seguro que quieres borrar la pizza <strong>{{ $pizza->nombre }}</strong>?
+    </p>
+
+    <form method="POST" action="{{ route('pizzas.destroy', $pizza) }}">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit">Sí, eliminar</button>
+        <a href="{{ route('pizzas.showAllPizzas') }}">Cancelar</a>
+    </form>
+@endsection
