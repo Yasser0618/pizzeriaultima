@@ -7,10 +7,10 @@
             <a href="{{ route('pizzas.create') }}">Crear Pizza</a>
         </li>
         <li>
-            <a href="{{ route('pizzas.showAllPizzas') }}">Crear Ingrediente</a>
+            <a href="{{ route('ingredientes.showAllIngredientes') }}">Listar ingredientes</a>
         </li>
         <li>
-            <a href="{{ route('ingredientes.showAllIngredientes') }}">Listar ingredientes</a>
+            <a href="{{ route('ingredientes.create') }}">Crear Ingrediente</a>
         </li>
     </ul>
 </nav>

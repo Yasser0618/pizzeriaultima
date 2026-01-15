@@ -21,4 +21,22 @@ class IngredienteController extends Controller
     }
     */
 
+    public function create(){
+        return view('ingredientes.create');
+    }
+
+    public function store(Request $request){
+        $request -> validate([
+            'nombre' => 'required'
+        ],
+        [
+            'nombre.required' => 'El nombre es obligatorio'
+        ]);
+
+        $ingrediente = Ingrediente::create($request->only([
+            'nombre'
+        ]));
+
+        return redirect() -> route('ingredientes.showAllIngredientes');
+    }
 }
