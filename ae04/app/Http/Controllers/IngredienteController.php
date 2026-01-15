@@ -39,4 +39,38 @@ class IngredienteController extends Controller
 
         return redirect() -> route('ingredientes.showAllIngredientes');
     }
+
+    public function edit($id){
+        $ingrediente = Ingrediente::findOrFail($id);
+        return view('ingredientes.edit', compact('ingrediente'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'nombre' => 'required'
+        ],
+        [
+            'nombre.required' => 'El nombre es obligatorio'
+        ]);
+
+        $ingrediente = Ingrediente::findOrFail($id);
+
+        $ingrediente->update($request->only([
+            'nombre'
+        ]));
+
+        return redirect() -> route('ingredientes.showAllIngredientes');
+    }
+
+    public function confirmDelete(Ingrediente $ingrediente){
+        return view('ingredientes.confirmDelete', compact('ingrediente'));
+    }
+
+    public function destroy(Ingrediente $ingrediente){
+        $ingrediente->delete();
+
+        return redirect()
+            ->route('ingredientes.showAllIngredientes')
+            ->with('succes', 'Ingrediente eliminado con exito');
+    }
 }
