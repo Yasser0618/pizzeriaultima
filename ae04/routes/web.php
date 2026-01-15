@@ -18,3 +18,6 @@ Route::delete('/pizzas/destroy/{pizza}', [PizzaController::class, 'destroy'])->n
 
 Route::get('/ingredientes', [IngredienteController::class, 'showAllIngredientes'])->name('ingredientes.showAllIngredientes');
 Route::get('/ingrediente/{id}', [IngredienteController::class, 'showOneIngrediente'])->name('ingredientes.showOneIngrediente');
+
+Route::post('/ingredientes/store', [IngredienteController::class, 'store'])->name('ingredientes.store');
+Route::get('/ingredientes/create', [IngredienteController::class, 'create'])->name('ingredientes.create');
